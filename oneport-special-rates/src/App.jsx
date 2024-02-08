@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import CarrierButton from "./components/CarrierButton";
 import RateCard from "./components/RateCard";
+import useRates from "./hooks/useRates";
 
 const App = () => {
+  const rates = useRates("20FT", "dry");
   const carriers = ["COSCO", "HMM", "MAERSK", "EVERGREEN", "OOCL", "YANG MING"];
-  const rates = ["$1,885", "$1,885", "$1,885", "$1,885", "$1,885", "$1,885"];
+  const total_amount = [
+    "$1,885",
+    "$1,885",
+    "$1,885",
+    "$1,885",
+    "$1,885",
+    "$1,885",
+  ];
   return (
     <div className="max-w-[1200px] mx-auto relative px-5 py-10 text-4xl col-span-1">
       <div className="relative min-h-[843px]">
@@ -27,7 +36,15 @@ const App = () => {
         {/* Card Rates */}
         <div className="card-rates pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {rates.map((rate, i) => (
-            <RateCard key={i} rate={rate} />
+            <RateCard
+              key={i}
+              carrier_name={rate.carrier_name}
+              origin_port_code={rate.origin_port_code}
+              destination_port_code={rate.destination_port_code}
+              sailing_date={rate.sailing_date}
+              transit_time={rate.transit_time}
+              free_days={rate.detention_days + rate.demurrage_days}
+            />
           ))}
         </div>
       </div>
