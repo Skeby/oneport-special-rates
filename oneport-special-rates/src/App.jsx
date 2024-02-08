@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CarrierButton from "./components/CarrierButton";
 import RateCard from "./components/RateCard";
 import useRates from "./hooks/useRates";
 
 const App = () => {
+  // TODO: Comment all files
   const rates = useRates("20FT", "dry");
   const carriers = Array.from(new Set(rates.map((rate) => rate.carrier_name)));
+  const [selectedCarrier, setSelectedCarrier] = useState(null);
+
+  const filteredRates = rates.filter(
+    (rate) => rate.carrier_name === selectedCarrier
+  );
+
+  const handleCarrierClick = (carrier) => {
+    if (carrier !== selectedCarrier) {
+      setSelectedCarrier(carrier);
+    }
+  };
+
+  useEffect(() => {
+    if (carriers.length > 0 && selectedCarrier === null) {
+      setSelectedCarrier(carriers[0]);
+    }
+  }, [carriers, selectedCarrier]);
 
   return (
     <div className="max-w-[1200px] mx-auto relative px-5 py-10 text-4xl col-span-1">
@@ -19,7 +37,12 @@ const App = () => {
           <div className="flex items-center gap-x-3"></div>
           <div className="flex scrollbar items-center gap-x-3 max-w-[520px] lg:max-w-[750px] overflow-auto">
             {carriers.map((carrier) => (
-              <CarrierButton key={carrier} name={carrier}>
+              <CarrierButton
+                key={carrier}
+                name={carrier}
+                isSelected={carrier === selectedCarrier}
+                onClick={() => handleCarrierClick(carrier)}
+              >
                 {carrier}
               </CarrierButton>
             ))}
@@ -28,7 +51,7 @@ const App = () => {
 
         {/* Card Rates */}
         <div className="card-rates pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {rates.map((rate, i) => (
+          {filteredRates.map((rate, i) => (
             <RateCard
               key={i}
               carrier_name={rate.carrier_name}

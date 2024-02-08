@@ -14,7 +14,7 @@ const useRates = ({ container_size, container_type }) => {
       })
       .then((res) => {
         setRates(res.data.data.rates);
-        console.log(rates);
+        // console.log(rates);
       });
   });
   return rates;
