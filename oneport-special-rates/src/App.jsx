@@ -5,15 +5,8 @@ import useRates from "./hooks/useRates";
 
 const App = () => {
   const rates = useRates("20FT", "dry");
-  const carriers = ["COSCO", "HMM", "MAERSK", "EVERGREEN", "OOCL", "YANG MING"];
-  const total_amount = [
-    "$1,885",
-    "$1,885",
-    "$1,885",
-    "$1,885",
-    "$1,885",
-    "$1,885",
-  ];
+  const carriers = Array.from(new Set(rates.map((rate) => rate.carrier_name)));
+
   return (
     <div className="max-w-[1200px] mx-auto relative px-5 py-10 text-4xl col-span-1">
       <div className="relative min-h-[843px]">
