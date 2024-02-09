@@ -34,13 +34,21 @@ const App = () => {
   const handleCarrierClick = (carrier) => {
     if (carrier !== selectedCarrier) {
       setSelectedCarrier(carrier);
+      setRateCount(defaultRateCount);
     }
   };
 
-  const handleShowAllClick = () => {
-    setRateCount((prevCount) =>
-      prevCount === totalRateCount ? defaultRateCount : totalRateCount
-    );
+  const handlePaginationClick = () => {
+    setRateCount((prevCount) => {
+      if (prevCount + 9 < totalRateCount) {
+        return prevCount + 9;
+      } else if (rateCount === totalRateCount) {
+        return defaultRateCount;
+      } else {
+        return totalRateCount;
+      }
+    });
+    console.log(rateCount, totalRateCount, defaultRateCount);
   };
 
   const handleSelectClick = (index) => {
@@ -120,9 +128,9 @@ const App = () => {
             </p>
             <button
               className="border-solid flex px-12 mx-auto border-[1px] border-[#374151] rounded py-3"
-              onClick={handleShowAllClick}
+              onClick={handlePaginationClick}
             >
-              {rateCount === defaultRateCount ? "Show All" : "Show Less"}
+              {rateCount === totalRateCount ? "Show Less" : "Load More"}
             </button>
           </div>
         )}
