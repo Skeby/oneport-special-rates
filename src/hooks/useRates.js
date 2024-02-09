@@ -3,9 +3,11 @@ import apiClient from "../services/apiClient";
 
 const useRates = (container_size, container_type) => {
   const [rates, setRates] = useState([]);
+  const [isLoading, setLoading] = useState(false);
   console.log(container_size, container_type);
 
   useEffect(() => {
+    setLoading(true);
     if (container_size && container_type) {
       apiClient
         .get("/get_special_rates_no_auth", {
@@ -16,10 +18,13 @@ const useRates = (container_size, container_type) => {
         })
         .then((res) => {
           setRates(res.data.data.rates);
+          setTimeout(() => {
+            setLoading(false);
+          }, 1000);
         });
     }
   }, [container_size, container_type]);
-  return rates;
+  return { rates, isLoading };
 };
 
 export default useRates;
