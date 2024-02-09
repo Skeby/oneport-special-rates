@@ -37,10 +37,10 @@ const App = () => {
   }, [carriers, selectedCarrier]);
 
   return (
-    <div className="max-w-[1200px] mx-auto relative px-5 py-10 text-4xl col-span-1">
+    <div className="max-w-[1200px] mx-auto relative px-5 py-10 col-span-1">
       <div className="relative min-h-[843px]">
         {/* Heading */}
-        <h1 className="font-sato font-medium">Special Rates</h1>
+        <h1 className="font-sato font-medium text-4xl">Special Rates</h1>
 
         {/* Top Section */}
         <div className="mt-10 pb-8 bottom-divider-2 flex flex-col gap-y-5 md:gap-y-0 md:flex-row md:justify-between md:items-center gap-x-3 relative z-[20]">
@@ -82,7 +82,7 @@ const App = () => {
               Viewing {rateCount} of {totalRateCount} special rates
             </p>
             <button
-              className="text-base border-solid flex px-12 mx-auto border-[1px] border-[#374151] rounded py-3"
+              className="border-solid flex px-12 mx-auto border-[1px] border-[#374151] rounded py-3"
               onClick={handleShowAllClick}
             >
               {rateCount === defaultRateCount ? "Show All" : "Show Less"}
