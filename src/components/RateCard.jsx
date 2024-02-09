@@ -3,6 +3,7 @@ import link from "../assets/link.svg";
 
 const RateCard = ({
   carrier_name,
+  total_amount_usd,
   origin_port_code,
   destination_port_code,
   sailing_date,
@@ -22,7 +23,9 @@ const RateCard = ({
         </div>
       </div>
       <div className="mt-3 mb-6 flex items-center justify-between">
-        <p className="text-xl font-normal text-[#004800]">$1,885</p>
+        <p className="text-xl font-normal text-[#004800]">
+          ${total_amount_usd.toLocaleString()}
+        </p>
       </div>
       <div className="border-t-[1px] text-sm pt-6 grid grid-cols-3">
         <div>

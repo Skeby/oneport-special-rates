@@ -115,6 +115,7 @@ const App = () => {
               <RateCard
                 key={index}
                 carrier_name={rate.carrier_name}
+                total_amount_usd={rate.total_amount_usd}
                 origin_port_code={rate.origin_port_code}
                 destination_port_code={rate.destination_port_code}
                 sailing_date={rate.sailing_date}
