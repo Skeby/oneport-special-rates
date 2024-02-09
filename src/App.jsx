@@ -92,7 +92,7 @@ const App = () => {
               />
             ))}
           </div>
-          <div className="flex scrollbar items-center gap-x-3 max-w-[520px] lg:max-w-[750px] overflow-auto">
+          <div className="carrier-container flex items-center gap-x-3 max-w-[520px] lg:max-w-[750px] overflow-auto">
             {carriers.map((carrier) => (
               <CarrierButton
                 key={carrier}

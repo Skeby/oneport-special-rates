@@ -1,0 +1,8 @@
+.carrier-container::-webkit-scrollbar {
+  width: 5px;
+  height: 1px;
+}
+
+.carrier-container::-webkit-scrollbar-thumb {
+  background-color: #6b7280;
+}
