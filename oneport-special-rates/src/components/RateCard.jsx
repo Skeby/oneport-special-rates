@@ -16,7 +16,7 @@ const RateCard = ({
         <div className="black-text-3 flex text-sm font-normal items-center gap-x-2">
           <p>{origin_port_code}</p>
           <span>
-            <img src={link} alt="link" />
+            <img src={link} alt="" />
           </span>
           <p>{destination_port_code}</p>
         </div>

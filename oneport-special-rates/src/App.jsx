@@ -1,15 +1,28 @@
 import { useState, useEffect } from "react";
 import CarrierButton from "./components/CarrierButton";
 import RateCard from "./components/RateCard";
+import ContainerSelect from "./components/ContainerSelect";
 import useRates from "./hooks/useRates";
 
 const App = () => {
   // TODO: Comment all files
-  const rates = useRates("20FT", "dry");
   const defaultRateCount = 9;
-  const carriers = Array.from(new Set(rates.map((rate) => rate.carrier_name)));
+  const containerSizes = ["20FT", "40FT", "40FT HC"];
+  const containerTypes = ["DRY", "REEFER"];
+  const containerParams = [containerSizes, containerTypes];
+
   const [selectedCarrier, setSelectedCarrier] = useState(null);
   const [rateCount, setRateCount] = useState(defaultRateCount);
+  const [selectedContainerParam, setSelectedContainerParam] = useState(
+    containerParams.map((params) => params[0])
+  );
+  const rates = useRates(...selectedContainerParam);
+  const carriers = Array.from(new Set(rates.map((rate) => rate.carrier_name)));
+
+  const [selectDisplays, setSelectDisplays] = useState(
+    containerParams.map(() => false)
+  );
+  // const [selectDisplayed, setSelectDisplayed] = useState(false);
 
   const filteredRates = rates.filter(
     (rate) => rate.carrier_name === selectedCarrier
@@ -30,6 +43,18 @@ const App = () => {
     );
   };
 
+  const handleSelectClick = (index) => {
+    setSelectDisplays((prevDisplays) =>
+      prevDisplays.map((prev, i) => (i === index ? !prev : false))
+    );
+  };
+
+  const handleContainerParamSelect = (index, containerParam) => {
+    setSelectedContainerParam((prevParams) =>
+      prevParams.map((prev, i) => (i === index ? containerParam : prev))
+    );
+  };
+
   useEffect(() => {
     if (carriers.length > 0 && selectedCarrier === null) {
       setSelectedCarrier(carriers[0]);
@@ -45,7 +70,19 @@ const App = () => {
         {/* Top Section */}
         <div className="mt-10 pb-8 bottom-divider-2 flex flex-col gap-y-5 md:gap-y-0 md:flex-row md:justify-between md:items-center gap-x-3 relative z-[20]">
           {/* Select tags */}
-          <div className="flex items-center gap-x-3"></div>
+          <div className="flex items-center gap-x-3">
+            {containerParams.map((containerParam, i) => (
+              <ContainerSelect
+                key={i}
+                containerParams={containerParam}
+                onClick={() => handleSelectClick(i)}
+                selectDisplayed={selectDisplays[i]}
+                onSelect={(containerParam) =>
+                  handleContainerParamSelect(i, containerParam)
+                }
+              />
+            ))}
+          </div>
           <div className="flex scrollbar items-center gap-x-3 max-w-[520px] lg:max-w-[750px] overflow-auto">
             {carriers.map((carrier) => (
               <CarrierButton
