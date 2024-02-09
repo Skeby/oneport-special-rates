@@ -16,7 +16,7 @@ const useRates = ({ container_size, container_type }) => {
         setRates(res.data.data.rates);
         // console.log(rates);
       });
-  });
+  }, []);
   return rates;
 };
 
