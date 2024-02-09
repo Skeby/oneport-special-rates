@@ -31,11 +31,23 @@ const RateCard = ({
         </div>
         <div>
           <p className="grey-text font-light mb-1.5">Transit Time</p>
-          <p className="black-text-3">{transit_time ? transit_time : "N/A"}</p>
+          <p className="black-text-3">
+            {transit_time
+              ? transit_time > 1
+                ? transit_time + " days"
+                : transit_time + " day"
+              : "N/A"}
+          </p>
         </div>
         <div>
           <p className="grey-text font-light mb-1.5">Free Days</p>
-          <p className="black-text-3">{free_days}</p>
+          <p className="black-text-3">
+            {free_days
+              ? free_days > 1
+                ? free_days + " days"
+                : free_days + " day"
+              : "N/A"}
+          </p>
         </div>
       </div>
     </div>
