@@ -3,6 +3,7 @@ import CarrierButton from "./components/CarrierButton";
 import RateCard from "./components/RateCard";
 import ContainerSelect from "./components/ContainerSelect";
 import useRates from "./hooks/useRates";
+import "./App.css";
 
 const App = () => {
   // TODO: Comment all files
@@ -109,7 +110,7 @@ const App = () => {
         {totalRateCount === 0 ? (
           <p className="mt-4">No Rates To Display</p>
         ) : (
-          <div className="card-rates pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="border-t-[1px] border-[#f3f4f6] pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {displayedRates.map((rate, index) => (
               <RateCard
                 key={index}
