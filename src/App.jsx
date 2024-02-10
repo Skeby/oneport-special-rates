@@ -5,6 +5,9 @@ import RateCard from "./components/RateCard";
 import ContainerSelect from "./components/ContainerSelect";
 import useRates from "./hooks/useRates";
 import "./App.css";
+import RateCardContainer from "./components/RateCardContainer";
+import Pagination from "./components/Pagination";
+import CarrierButtonContainer from "./components/CarrierButtonContainer";
 
 const App = () => {
   // TODO: Comment all files
@@ -101,18 +104,11 @@ const App = () => {
                 ))}
               </div>
               {totalRateCount > 0 && (
-                <div className="carrier-container flex items-center gap-x-3 max-w-[520px] lg:max-w-[750px] overflow-auto">
-                  {carriers.map((carrier) => (
-                    <CarrierButton
-                      key={carrier}
-                      name={carrier}
-                      isSelected={carrier === selectedCarrier}
-                      onClick={() => handleCarrierClick(carrier)}
-                    >
-                      {carrier}
-                    </CarrierButton>
-                  ))}
-                </div>
+                <CarrierButtonContainer
+                  carriers={carriers}
+                  selectedCarrier={selectedCarrier}
+                  handleCarrierClick={handleCarrierClick}
+                />
               )}
             </div>
 
@@ -120,35 +116,16 @@ const App = () => {
             {totalRateCount === 0 ? (
               <p className="mt-4">No Rates To Display</p>
             ) : (
-              <div className="border-[#f3f4f6] pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {displayedRates.map((rate, index) => (
-                  <RateCard
-                    key={index}
-                    carrier_name={rate.carrier_name}
-                    total_amount_usd={rate.total_amount_usd}
-                    origin_port_code={rate.origin_port_code}
-                    destination_port_code={rate.destination_port_code}
-                    sailing_date={rate.sailing_date}
-                    transit_time={rate.transit_time}
-                    free_days={rate.detention_days + rate.demurrage_days}
-                  />
-                ))}
-              </div>
+              <RateCardContainer displayedRates={displayedRates} />
             )}
 
-            {/* Additional Rates */}
+            {/* Pagination */}
             {totalRateCount > defaultRateCount && (
-              <div className="mt-10">
-                <p className="text-center text-sm black-text-3 mb-4">
-                  Viewing {rateCount} of {totalRateCount} special rates
-                </p>
-                <button
-                  className="border-solid flex px-12 mx-auto border-[1px] border-[#374151] rounded py-3"
-                  onClick={handlePaginationClick}
-                >
-                  {rateCount === totalRateCount ? "Show Less" : "Load More"}
-                </button>
-              </div>
+              <Pagination
+                rateCount={rateCount}
+                totalRateCount={totalRateCount}
+                handlePaginationClick={handlePaginationClick}
+              />
             )}
           </>
         )}
