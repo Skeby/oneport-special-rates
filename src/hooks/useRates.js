@@ -3,11 +3,10 @@ import apiClient from "../services/apiClient";
 
 const useRates = (container_size, container_type) => {
   const [rates, setRates] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   console.log(container_size, container_type);
 
   useEffect(() => {
-    setLoading(true);
     if (container_size && container_type) {
       apiClient
         .get("/get_special_rates_no_auth", {
