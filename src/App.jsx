@@ -8,6 +8,7 @@ import "./App.css";
 import RateCardContainer from "./components/RateCardContainer";
 import Pagination from "./components/Pagination";
 import CarrierButtonContainer from "./components/CarrierButtonContainer";
+import Heading from "./components/Heading";
 
 const App = () => {
   // TODO: Comment all files
@@ -76,7 +77,7 @@ const App = () => {
     <div className="max-w-[1200px] mx-auto relative px-5 py-10 col-span-1">
       <div className="relative min-h-[843px]">
         {/* Heading */}
-        <h1 className="font-sato font-medium text-4xl">Special Rates</h1>
+        <Heading>Special Rates</Heading>
 
         {isLoading ? (
           <div className="flex items-center justify-center mt-5">
