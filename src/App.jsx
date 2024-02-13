@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Loader from "./assets/loader.svg";
+import Loader from "./components/Loader";
 import CarrierButton from "./components/CarrierButton";
 import RateCard from "./components/RateCard";
 import ContainerSelect from "./components/ContainerSelect";
@@ -81,9 +81,7 @@ const App = () => {
         <Heading>Special Rates</Heading>
 
         {isLoading ? (
-          <div className="flex items-center justify-center mt-5">
-            <img src={Loader} alt="" />
-          </div>
+          <Loader />
         ) : (
           <>
             {/* Filters */}
