@@ -4,7 +4,6 @@ import apiClient from "../services/apiClient";
 const useRates = (container_size, container_type) => {
   const [rates, setRates] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  console.log(container_size, container_type);
 
   useEffect(() => {
     if (container_size && container_type) {

@@ -27,14 +27,12 @@ const App = () => {
   const [selectDisplays, setSelectDisplays] = useState(
     containerParams.map(() => false)
   );
-  // const [selectDisplayed, setSelectDisplayed] = useState(false);
 
   const filteredRates = rates.filter(
     (rate) => rate.carrier_name === selectedCarrier
   );
 
   const totalRateCount = filteredRates.length;
-  // const totalRateCount = 0;
   const displayedRates = filteredRates.slice(0, rateCount);
 
   const handleCarrierClick = (carrier) => {
@@ -54,7 +52,6 @@ const App = () => {
         return totalRateCount;
       }
     });
-    console.log(rateCount, totalRateCount, defaultRateCount);
   };
 
   const handleSelectClick = (index) => {
