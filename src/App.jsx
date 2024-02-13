@@ -9,6 +9,7 @@ import RateCardContainer from "./components/RateCardContainer";
 import Pagination from "./components/Pagination";
 import CarrierButtonContainer from "./components/CarrierButtonContainer";
 import Heading from "./components/Heading";
+import FiltersContainer from "./components/FiltersContainer";
 
 const App = () => {
   // TODO: Comment all files
@@ -85,30 +86,17 @@ const App = () => {
           </div>
         ) : (
           <>
-            {/* Top Section */}
-            <div className="mt-10 pb-8 border-b-[1px] flex flex-col gap-y-5 md:gap-y-0 md:flex-row md:justify-between md:items-center gap-x-3 relative z-[20]">
-              {/* Select tags */}
-              <div className="flex items-center gap-x-3">
-                {containerParams.map((containerParam, i) => (
-                  <ContainerSelect
-                    key={i}
-                    containerParams={containerParam}
-                    onClick={() => handleSelectClick(i)}
-                    selectDisplayed={selectDisplays[i]}
-                    onSelect={(containerParam) =>
-                      handleContainerParamSelect(i, containerParam)
-                    }
-                  />
-                ))}
-              </div>
-              {totalRateCount > 0 && (
-                <CarrierButtonContainer
-                  carriers={carriers}
-                  selectedCarrier={selectedCarrier}
-                  handleCarrierClick={handleCarrierClick}
-                />
-              )}
-            </div>
+            {/* Filters */}
+            <FiltersContainer
+              containerParams={containerParams}
+              carriers={carriers}
+              totalRateCount={totalRateCount}
+              selectedCarrier={selectedCarrier}
+              selectDisplays={selectDisplays}
+              handleSelectClick={handleSelectClick}
+              handleContainerParamSelect={handleContainerParamSelect}
+              handleCarrierClick={handleCarrierClick}
+            />
 
             {/* Rates Cards */}
             {totalRateCount === 0 ? (
