@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
-import Loader from "./components/Loader";
-import CarrierButton from "./components/CarrierButton";
-import RateCard from "./components/RateCard";
-import ContainerSelect from "./components/ContainerSelect";
 import useRates from "./hooks/useRates";
-import "./App.css";
+import Heading from "./components/Heading";
+import Loader from "./components/Loader";
+import FiltersContainer from "./components/FiltersContainer";
 import RateCardContainer from "./components/RateCardContainer";
 import Pagination from "./components/Pagination";
-import CarrierButtonContainer from "./components/CarrierButtonContainer";
-import Heading from "./components/Heading";
-import FiltersContainer from "./components/FiltersContainer";
+import "./App.css";
 
 const App = () => {
   // TODO: Comment all files

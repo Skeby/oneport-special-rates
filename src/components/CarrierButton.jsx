@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 const CarrierButton = ({ name, isSelected, onClick }) => {
   return (
     <div
