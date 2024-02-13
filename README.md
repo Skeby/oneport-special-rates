@@ -1,10 +1,76 @@
-# React + Vite
+# OnePort 365 Interview Task Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
 
-Currently, two official plugins are available:
+- [Introduction](#introduction)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Dependencies](#dependencies)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction
 
-<!-- TODO: Update README -->
+This is my implementation for the special rates section of [Oneport365](https://www.oneport365.com/) home page.
+
+## Features
+
+- Rates can be filtered based on carriers.
+- Rates can be filtered based on container size and container type.
+- A pagination at the bottom of the page loads additional 9 rates when clicked.
+
+## Prerequisites
+
+Ensure you have the following installed:
+
+- Node.js
+- npm or yarn (whichever package manager you prefer)
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/your-project.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd your-project
+   ```
+
+3. Install dependencies:
+
+   ```bash
+    npm install
+    # or
+    yarn
+   ```
+
+## Usage
+
+- For development:
+
+  ```bash
+  npm run dev
+  # or
+  yarn dev
+  ```
+
+- For production build:
+
+  ```bash
+  npm run build
+  # or
+  yarn build
+  ```
+
+## Dependencies
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) (whichever package manager you prefer)
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Axios](https://axios-http.com/)
