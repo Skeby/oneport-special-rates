@@ -75,7 +75,7 @@ const App = () => {
   }, [carriers, selectedCarrier]);
 
   return (
-    <div className="max-w-[1200px] mx-auto relative px-5 py-10 col-span-1">
+    <div className="font-inter max-w-[1200px] mx-auto relative px-5 py-10 col-span-1">
       <div className="relative min-h-[843px]">
         {/* Heading */}
         <Heading>Special Rates</Heading>
