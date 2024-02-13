@@ -11,7 +11,7 @@
 
 ## Introduction
 
-This is my implementation for the special rates section of [Oneport365](https://www.oneport365.com/) home page.
+This is my implementation for the special rates section of [OnePort 365](https://www.oneport365.com/) home page.
 
 ## Features
 
