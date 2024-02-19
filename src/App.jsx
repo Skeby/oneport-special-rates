@@ -27,7 +27,10 @@ const App = () => {
   );
 
   const filteredRates = rates.filter(
-    (rate) => rate.carrier_name === selectedCarrier
+    (rate) =>
+      rate.carrier_name === selectedCarrier &&
+      rate.charge_breakdown.ocean_charges[0][0].containerType ===
+        selectedContainerParam[0]
   );
 
   const totalRateCount = filteredRates.length;
